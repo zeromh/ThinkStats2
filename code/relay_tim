@@ -1,0 +1,28 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Dec 28 11:59:47 2016
+
+@author: zeromh
+"""
+from relay import *
+
+def ObservedPmf(speed_pmf, speed):
+    d = speed_pmf.Copy()
+    for x, p in d.Items():
+        d[x] = p * abs(x-speed)
+    d.Normalize()
+    return d
+    
+    
+if __name__ == '__main__':
+    results = ReadResults()
+    speeds = GetSpeeds(results)
+    speeds = BinData(speeds, 3, 12, 100)
+    pmf = thinkstats2.Pmf(speeds, 'speeds')
+    
+    obs_pmf = ObservedPmf(pmf, 7.5)
+    thinkplot.Pmf(obs_pmf)
+    thinkplot.Show(title='PMF of observed running speed',
+                   xlabel='speed (mph)',
+                   ylabel='probability')

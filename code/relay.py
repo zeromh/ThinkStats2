@@ -95,6 +95,5 @@ def main():
                    xlabel='speed (mph)',
                    ylabel='probability')
 
-
 if __name__ == '__main__':
     main()
