@@ -19,4 +19,10 @@ print df.groupby('birthord_bin').totalwgt_lb.mean()
 first = df[df.birthord_bin == 'first'].totalwgt_lb
 other = df[df.birthord_bin == 'other'].totalwgt_lb
 
-print "Cohen's d for this difference is:", CohenEffectSize(first, other)
+print "Cohen's d for this difference is:", \
+    thinkstats2.CohenEffectSize(first, other)
+
+# This is a very small difference.
+# Additionally, this effect shows that first babies weigh slightly
+# LESS than other babies, even though we learned in the book chapter that
+# first babies are slightly LATE. This is odd.

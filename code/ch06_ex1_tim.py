@@ -65,6 +65,8 @@ def main():
     print "Percent of people with incomes <= mean:", cdf[mean]
     pdf = thinkstats2.EstimatedPdf(sample)
     thinkplot.Pdf(pdf)
+    thinkplot.Show(xlabel='household income',
+               ylabel='PDF')
 
 if __name__ == "__main__":
     main()
